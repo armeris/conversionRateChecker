@@ -13,7 +13,7 @@ if (response_eur_jpy)
   eur_jpy_rate = JSON.parse(response_eur_jpy)['rates']['JPY']
 end
 
-document = {:_id => BSON::ObjectId.new, :BTC_JPY => response_jpy, :BTC_EUR => response_eur, :EUR_JPY => (eur_jpy_rate ? (1 / eur_jpy_rate) : eur_jpy_rate), :date => Time.now.strftime("%d/%m/%Y")}
+document = {:_id => BSON::ObjectId.new, :BTC_JPY => response_jpy, :BTC_EUR => response_eur, :EUR_JPY => (eur_jpy_rate ? (1 / eur_jpy_rate) : eur_jpy_rate), :date => Time.now}
 
 client[:conversionRates].insert_one document
 
